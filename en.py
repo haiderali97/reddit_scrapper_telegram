@@ -1,4 +1,9 @@
 start = "Welcome to the noodboi bot.\n\nI can help you look at some cuties from the subreddits of your choosing\n\n To subscribe to a subreddit, just send me \n`/subscribe name_of_subreddit`\n\nTo see a list of available subreddits just send me a \n/available"
 available = "The available subreddits are \n```{subreddits}```"
 no_subreddit = "Oops! We don't work with that subreddit right now.\nContact the developer if you would like to have it added"
-
+subscribed_to = "You have subscribed to {sub}. To unsubscribe simply send \n/unsubscribe {sub}"
+already_subbed = "You have already subscribed to that subreddit."
+subscribed_to_all = "You have subscribed to all our available subreddits. To unsubscribe simply send \n/unsubscribe all"
+unsub_from = "You have unsubscribed from {sub}. To subscribe again simply send \n/subscribe {sub}"
+unsub_from_all = "You have unsubscribed from all our available subreddits. To subscribe again simply send \n/subscribe all"
+not_subbed = "You are not subscribed to that subreddit"

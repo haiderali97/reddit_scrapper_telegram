@@ -5,9 +5,9 @@ import datetime
 import requests
 import shutil
 from tinydb import TinyDB, Query, where
+from bootstrap import images_db as db 
 
-
-db = TinyDB("images.json")
+#db = TinyDB("images.json")
 
 reddit = praw.Reddit(client_id=cfg.r_client_id,
                      client_secret=cfg.r_client_secret,
@@ -37,7 +37,7 @@ def fetch_image(sub, time):
         link = "www.reddit.com"+post.permalink
         URLS = Query()
         if (db.contains(URLS.url == url)):    
-            print("#####"*5,"DUPLICATED","#####"*10)
+            #print("#####"*5,"DUPLICATED","#####"*10)
             return ["null"]
         else:
             nameofImage = str(sub)+str(now.minute)+str(now.second)+(url[-4:])
