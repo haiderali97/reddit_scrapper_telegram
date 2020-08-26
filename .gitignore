@@ -1,0 +1,8 @@
+config.py 
+__pycache__
+.vscode
+images 
+old.py
+images.json 
+users.json 
+test.py
