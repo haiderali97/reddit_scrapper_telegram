@@ -2,8 +2,12 @@ from bootstrap import updater, users_db
 from random import choice 
 import config as cfg 
 import scrapper 
+import os 
 from tinydb import TinyDB, Query, where
 
+
+def delete_sent(file):
+        os.remove("images/"+file)
 
 def scrape_callback(context):     
     subr = choice(cfg.subreddits)
@@ -12,7 +16,7 @@ def scrape_callback(context):
         pass
     else:        
         nameofImage, title, url, link, sub, subtype = data         
-        print(sub, subtype)
+                
         users = users_db.search(where("subs").any([sub]))        
 
         if subtype == "image":            
@@ -23,7 +27,7 @@ def scrape_callback(context):
                                 photo = open(f'images/{nameofImage}', 'rb'),
                                 parse_mode = "MARKDOWN")
 
-            #delete_sent(data[0])
+            delete_sent(nameofImage)
         elif subtype == "gallery":
 
             for user in users:

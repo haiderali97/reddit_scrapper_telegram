@@ -44,7 +44,11 @@ def available(update, context):
     )
 
 def subscribe(update, context):
-    sub = update.message.text.split(" ")[1]       
+    try:
+        sub = update.message.text.split(" ")[1]       
+    except:
+        return available(update, context)        
+
     #check if sub is valid  
     if sub != 'all' and sub not in cfg.subreddits:
         updater.bot.send_message(update.effective_user.id, en.no_subreddit)
@@ -66,7 +70,11 @@ def subscribe(update, context):
     updater.bot.send_message(update.effective_user.id, text, parse_mode = "MARKDOWN")
         
 def unsubscribe(update, context):
-    sub = update.message.text.split(" ")[1]       
+    try:
+        sub = update.message.text.split(" ")[1]       
+    except:
+        return available(update, context)
+        
     #check if sub is valid  
     if sub != 'all' and sub not in cfg.subreddits:        
         return False
@@ -87,7 +95,7 @@ def unsubscribe(update, context):
     updater.bot.send_message(update.effective_user.id, text, parse_mode = "MARKDOWN")    
 
 jobs.run_repeating(job.scrape_callback, interval = 60, first = 0)
-#jobs.start()
+jobs.start()
 
 dispatcher.add_handler( CommandHandler('start', start, filters=Filters.private) )
 dispatcher.add_handler( CommandHandler('available', available, filters=Filters.private) )
